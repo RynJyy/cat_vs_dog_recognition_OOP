@@ -21,10 +21,18 @@ class ImageClassifier:
             batch_size=self.batch_size,
             class_mode='binary'
         )
-        # Load test images
+        #load test images
         self.test_generator = test_datagen.flow_from_directory(
             test_dir,
             target_size=self.image_size,
             batch_size=self.batch_size,
             class_mode='binary'
+        )
+
+        #compile the model with loss function, optimizer and metrics
+        def compile_model(self):
+            self.model.compile(
+            loss='binary_crossentropy',
+            optimizer='adam',
+            metrics=['accuracy']
         )
