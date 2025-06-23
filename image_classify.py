@@ -1,7 +1,6 @@
 #import necessary modules for image classification
 from tensorflow.keras import layers, models  # Used to build the CNN model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator  # For image loading and augmentation
-import matplotlib.pyplot as plt  # For plotting training history
 
 #class for image classification
 class ImageClassifier:
