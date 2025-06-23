@@ -46,3 +46,6 @@ class ImageClassifier:
                 test_data = self.test_generator,
                 test_steps = test_steps
             )
+    #save the model
+    def save_model(self, filename):
+        self.model.save(filename)
