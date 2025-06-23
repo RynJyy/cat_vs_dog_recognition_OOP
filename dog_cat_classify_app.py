@@ -19,3 +19,11 @@ window.resizable(False, False)
 background_img = Image.open("background.jpg")  # ADD YOUR BACKGROUND IMAGE HERE
 background_img = background_img.resize((600, 600))
 background_tk = ImageTk.PhotoImage(background_img)
+
+#insert all label
+background_label = tk.Label(window, image=background_tk)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
+result_label = tk.Label(window, text="Upload an image", font=("Comic Sans MS", 20, "bold"), bg="#000000", fg="#FFFFFF")
+result_label.pack(pady=20)
+img_label = tk.Label(window, bg="#000000")
+img_label.pack(pady=10)
