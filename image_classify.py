@@ -9,3 +9,15 @@ class ImageClassifier:
         self.image_size = image_size
         self.batch_size = batch_size
         self.model = None
+
+    #define method to load and validate data
+    def load_data(self, train_dir, validation_dir):
+        train_datagen = ImageDataGenerator(rescale=1./255)
+        val_datagen = ImageDataGenerator(rescale=1./255)
+        #load train images
+        self.train_generator = train_datagen.flow_from_directory(
+            train_dir,
+            target_size=self.image_size,
+            batch_size=self.batch_size,
+            class_mode='binary'
+        )
