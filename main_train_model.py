@@ -9,4 +9,9 @@ if __name__ == "__main__":
         train_dir='data/train',
         test_dir='data/test'
     )  
-    
+    #define the training process
+    classifier.build_model()
+    classifier.compile_model()
+    classifier.train(epochs=10)
+    classifier.plot_history()
+    classifier.save_model('dogs_vs_cats_classifier.h5')
