@@ -11,12 +11,19 @@ class ImageClassifier:
         self.model = None
 
     #define method to load and validate data
-    def load_data(self, train_dir, validation_dir):
+    def load_data(self, train_dir, test_dir):
         train_datagen = ImageDataGenerator(rescale=1./255)
-        val_datagen = ImageDataGenerator(rescale=1./255)
+        test_datagen = ImageDataGenerator(rescale=1./255)
         #load train images
         self.train_generator = train_datagen.flow_from_directory(
             train_dir,
+            target_size=self.image_size,
+            batch_size=self.batch_size,
+            class_mode='binary'
+        )
+        # Load test images
+        self.test_generator = test_datagen.flow_from_directory(
+            test_dir,
             target_size=self.image_size,
             batch_size=self.batch_size,
             class_mode='binary'
