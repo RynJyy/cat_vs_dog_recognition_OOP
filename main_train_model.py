@@ -6,8 +6,8 @@ if __name__ == "__main__":
     #load the data
     classifier = CatDogClassifier()
     classifier.load_data(
-        train_dir='data/train',
-        test_dir='data/test'
+        train_dir='archive/dogs_vs_cats/train',
+        test_dir='archive/dogs_vs_cats/test'
     )  
     #define the training process
     classifier.build_model()
