@@ -13,4 +13,6 @@ if __name__ == "__main__":
     classifier.build_model()
     classifier.compile_model()
     classifier.train(epochs=5)
-    classifier.save_model('dogs_vs_cats_classifier.h5')
+    classifier.save_model('dogs_vs_cats_transfer.h5')
+
+
