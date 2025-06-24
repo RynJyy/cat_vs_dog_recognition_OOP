@@ -1,6 +1,15 @@
 # 🐶 Cats vs 🐱 Dogs Classifier (with GUI)
+---
 
-A deep learning image classification project that distinguishes between **cats and dogs** using **TensorFlow/Keras** with **MobileNetV2 transfer learning**, and includes a **user-friendly GUI built with Tkinter**.
+## 📌 About
+
+This project is a Python-based image classification system that distinguishes between cats and dogs using transfer learning with MobileNetV2. It includes two main components:
+
+- A training pipeline that prepares, augments, and trains a model using TensorFlow and Keras.
+- A graphical user interface (GUI) built with Tkinter, allowing users to upload an image and receive a real-time prediction.
+- Designed for both educational and practical use, the codebase demonstrates the four pillars of Object-Oriented Programming (OOP)—encapsulation, abstraction, inheritance, and polymorphism—through clear class structures and modular design.
+
+Whether you're training your own model or simply exploring how machine learning integrates with GUI applications, this project offers a full end-to-end example.
 
 ---
 
