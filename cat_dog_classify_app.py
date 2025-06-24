@@ -5,15 +5,18 @@ from tensorflow.keras.preprocessing import image
 import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk
+import os
 
-#load model
-model = tf.keras.models.load_model('dogs_vs_cats_classifier.h5')
-
-#create GUI window
-window = tk.Tk()
-window.title("🐶 Dogs vs 🐱 Cats Classifier")
-window.geometry("600x600")
-window.resizable(False, False)
+class CatDogClassifierGUI:
+    def __init__(self, model_path='dogs_vs_cats_transfer.h5', image_size=(160, 160)):
+        # Load trained model
+        self.model = tf.keras.models.load_model(model_path)
+        self.image_size = image_size
+        #create GUI window
+        self.window = tk.Tk()
+        self.window.title("🐶 Dogs vs 🐱 Cats Classifier")
+        self.window.geometry("700x700")
+        self.window.resizable(False, False)
 
 #load background image
 background_img = Image.open("background.jpg")  # ADD YOUR BACKGROUND IMAGE HERE
