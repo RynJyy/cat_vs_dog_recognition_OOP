@@ -62,12 +62,16 @@ class CatDogClassifierGUI:
 
             self.result_label.config(text=result)
 
-    # Function to clear the image and result
+    #function to clear the image and result
     def clear_image(self): 
         self.img_label.config(image='')
         self.img_label.image = None
         self.result_label.config(text="Upload an image")
         self.filename_label.config(text="")
+    
+    #main looping
+    def run(self):
+        self.window.mainloop()
 
 #run the GUI loop
 if __name__ == "__main__":
