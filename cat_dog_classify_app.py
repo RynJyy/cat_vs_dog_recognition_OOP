@@ -62,10 +62,14 @@ class CatDogClassifierGUI:
 
             self.result_label.config(text=result)
 
-#upload button
-upload_btn = tk.Button(window, text="Upload Image", command=upload_image, font=("Comic Sans MS", 16, "bold"),
-                       bg="#4CAF50", fg="white", activebackground="#45a049", padx=20, pady=10)
-upload_btn.pack(pady=20)
+    # Function to clear the image and result
+    def clear_image(self): 
+        self.img_label.config(image='')
+        self.img_label.image = None
+        self.result_label.config(text="Upload an image")
+        self.filename_label.config(text="")
 
 #run the GUI loop
-window.mainloop()
+if __name__ == "__main__":
+    app = CatDogClassifierGUI()
+    app.run()
