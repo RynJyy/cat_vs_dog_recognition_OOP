@@ -49,3 +49,14 @@ def upload_image():
         img_array = image.img_to_array(img_model)
         img_array = img_array / 255.0
         img_array = np.expand_dims(img_array, axis=0)
+
+        # Predict
+        prediction = model.predict(img_array)[0][0]
+
+        # Display result
+        if prediction > 0.5:
+            result = f"🐶 Prediction: Dog"
+        else:
+            result = f"🐱 Prediction: Cat"
+
+        result_label.config(text=result)
