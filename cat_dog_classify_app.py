@@ -33,34 +33,34 @@ class CatDogClassifierGUI:
         self.filename_label = tk.Label(self.window, text="", font=("Comic Sans MS", 12), bg="#000000", fg="#AAAAAA")
         self.filename_label.pack()
 
-#function to upload image
-def upload_image():
-    file_path = filedialog.askopenfilename()
+    #function to upload image
+    def upload_image(self):
+        file_path = filedialog.askopenfilename()
 
-    if file_path:
-        #display image
-        img = Image.open(file_path)
-        img = img.resize((300, 300))
-        img_tk = ImageTk.PhotoImage(img)
-        img_label.configure(image=img_tk)
-        img_label.image = img_tk
+        if file_path:
+            #display image
+            img = Image.open(file_path)
+            img = img.resize((400, 400))
+            img_tk = ImageTk.PhotoImage(img)
+            self.img_label.configure(image=img_tk)
+            self.img_label.image = img_tk
 
-        #prepare image for model
-        img_model = image.load_img(file_path, target_size=(150, 150))
-        img_array = image.img_to_array(img_model)
-        img_array = img_array / 255.0
-        img_array = np.expand_dims(img_array, axis=0)
+            #prepare image for model
+            img_model = image.load_img(file_path, target_size=(150, 150))
+            img_array = image.img_to_array(img_model)
+            img_array = img_array / 255.0
+            img_array = np.expand_dims(img_array, axis=0)
 
-        #predict
-        prediction = model.predict(img_array)[0][0]
+            #predict
+            prediction = self.model.predict(img_array)[0][0]
 
-        #display result
-        if prediction > 0.5:
-            result = f"🐶 Prediction: Dog"
-        else:
-            result = f"🐱 Prediction: Cat"
+            #display result
+            if prediction > 0.5:
+                result = f"🐶 Prediction: Dog ({prediction:.2f})"
+            else:
+                result = f"🐱 Prediction: Cat ({1 - prediction:.2f})"
 
-        result_label.config(text=result)
+            self.result_label.config(text=result)
 
 #upload button
 upload_btn = tk.Button(window, text="Upload Image", command=upload_image, font=("Comic Sans MS", 16, "bold"),
