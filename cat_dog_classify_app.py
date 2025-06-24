@@ -32,7 +32,7 @@ class CatDogClassifierGUI:
         self.img_label.pack(pady=10)
         self.filename_label = tk.Label(self.window, text="", font=("Comic Sans MS", 12), bg="#000000", fg="#AAAAAA")
         self.filename_label.pack()
-        
+
         #insert buttons
         upload_btn = tk.Button(self.window, text="Upload Image", command=self.upload_image,
                             font=("Comic Sans MS", 16, "bold"),
@@ -90,8 +90,4 @@ class CatDogClassifierGUI:
         self.window.mainloop()
 
 
-#run the GUI loop
-if __name__ == "__main__":
-    app = CatDogClassifierGUI()
-    app.run()
 
