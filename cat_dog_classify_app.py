@@ -18,22 +18,20 @@ class CatDogClassifierGUI:
         self.window.geometry("700x700")
         self.window.resizable(False, False)
 
-#load background image
-background_img = Image.open("background.jpg")  # ADD YOUR BACKGROUND IMAGE HERE
-background_img = background_img.resize((600, 600))
-background_tk = ImageTk.PhotoImage(background_img)
+        #load background image
+        background_img = Image.open("background.jpg")  #ADD YOUR BACKGROUND IMAGE HERE
+        background_img = background_img.resize((700, 700))
+        self.background_tk = ImageTk.PhotoImage(background_img)
+        self.background_label = tk.Label(self.window, image=self.background_tk)
+        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-#insert all label
-background_label = tk.Label(window, image=background_tk)
-background_label.place(x=0, y=0, relwidth=1, relheight=1)
-result_label = tk.Label(window, text="Upload an image", font=("Comic Sans MS", 20, "bold"), bg="#000000", fg="#FFFFFF")
-result_label.pack(pady=20)
-img_label = tk.Label(window, bg="#000000")
-img_label.pack(pady=10)
-
-#label to display image
-img_label = tk.Label(window, bg="#000000")
-img_label.pack(pady=10)
+        #insert all label
+        self.result_label = tk.Label(self.window, text="Upload an image", font=("Comic Sans MS", 20, "bold"), bg="#000000", fg="#FFFFFF")
+        self.result_label.pack(pady=20)
+        self.img_label = tk.Label(self.window, bg="#000000")
+        self.img_label.pack(pady=10)
+        self.filename_label = tk.Label(self.window, text="", font=("Comic Sans MS", 12), bg="#000000", fg="#AAAAAA")
+        self.filename_label.pack()
 
 #function to upload image
 def upload_image():
