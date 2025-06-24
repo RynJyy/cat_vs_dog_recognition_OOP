@@ -11,21 +11,32 @@ class ImageClassifier:
 
     #define method to load and validate data
     def load_data(self, train_dir, test_dir):
-        train_datagen = ImageDataGenerator(rescale = 1./255)
-        test_datagen = ImageDataGenerator(rescale = 1./255)
-        #load train images
-        self.train_generator = train_datagen.flow_from_directory(
-            train_dir,
-            target_size = self.image_size,
-            batch_size = self.batch_size,
-            class_mode ='binary'
+        train_datagen = ImageDataGenerator(
+            #improves the model's performance
+            rescale = 1./255,  
+            rotation_range = 40, 
+            width_shift_range = 0.2,  
+            height_shift_range = 0.2,
+            shear_range = 0.2, 
+            zoom_range = 0.2,  
+            horizontal_flip = True,
+            fill_mode = 'nearest' 
         )
+        val_datagen = ImageDataGenerator(rescale = 1./255)  #validation data rescaling
+
         #load test images
-        self.test_generator = test_datagen.flow_from_directory(
+        self.test_generator = train_datagen.flow_from_directory(
             test_dir,
             target_size = self.image_size,
             batch_size = self.batch_size,
             class_mode = 'binary'
+        )
+        #load training images
+        self.validation_generator = val_datagen.flow_from_directory( 
+            test_dir,
+            target_size=self.image_size,
+            batch_size=self.batch_size,
+            class_mode='binary'
         )
 
     #compile the model with loss function, optimizer and metrics
