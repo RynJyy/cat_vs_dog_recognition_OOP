@@ -78,6 +78,22 @@ Upload any image of a cat or dog and see the prediction!
 
 ---
 
+## 👨‍🏫 OOP Principles Demonstrated
+
+1. Encapsulation
+   - Each class (ImageClassifier, CatDogClassifier, and CatDogClassifierGUI) encapsulates its data and methods.
+
+2. Abstraction
+   - Complex processes like training, loading data, or GUI interactions are abstracted into simple method calls.
+
+3. Inheritance
+   - CatDogClassifier inherits from ImageClassifier to extend functionality while reusing core logic.
+
+4. Polymorphism
+   - Methods like load_data() or build_model() behave differently depending on the subclass implementing them.
+
+---
+
 ## 🖼️ GUI Preview
 
 > Includes a background image, stylized labels, and result display. You can customize the `background.jpg` file.
