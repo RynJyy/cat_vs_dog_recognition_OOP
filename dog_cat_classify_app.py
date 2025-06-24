@@ -27,3 +27,25 @@ result_label = tk.Label(window, text="Upload an image", font=("Comic Sans MS", 2
 result_label.pack(pady=20)
 img_label = tk.Label(window, bg="#000000")
 img_label.pack(pady=10)
+
+# Label to display image
+img_label = tk.Label(window, bg="#000000")
+img_label.pack(pady=10)
+
+# Function to upload image
+def upload_image():
+    file_path = filedialog.askopenfilename()
+
+    if file_path:
+        # Display image
+        img = Image.open(file_path)
+        img = img.resize((300, 300))
+        img_tk = ImageTk.PhotoImage(img)
+        img_label.configure(image=img_tk)
+        img_label.image = img_tk
+
+        # Prepare image for model
+        img_model = image.load_img(file_path, target_size=(150, 150))
+        img_array = image.img_to_array(img_model)
+        img_array = img_array / 255.0
+        img_array = np.expand_dims(img_array, axis=0)
