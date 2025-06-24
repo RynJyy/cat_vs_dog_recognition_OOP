@@ -32,6 +32,22 @@ class CatDogClassifierGUI:
         self.img_label.pack(pady=10)
         self.filename_label = tk.Label(self.window, text="", font=("Comic Sans MS", 12), bg="#000000", fg="#AAAAAA")
         self.filename_label.pack()
+        
+        #insert buttons
+        upload_btn = tk.Button(self.window, text="Upload Image", command=self.upload_image,
+                            font=("Comic Sans MS", 16, "bold"),
+                            bg="#4CAF50", fg="white", padx=20, pady=10)
+        upload_btn.pack(pady=10)
+        # Clear button
+        clear_btn = tk.Button(self.window, text="Clear Image", command=self.clear_image,
+                            font=("Comic Sans MS", 14),
+                            bg="#f44336", fg="white", padx=20, pady=8)
+        clear_btn.pack(pady=5)
+        # Exit button
+        exit_btn = tk.Button(self.window, text="Exit", command=self.window.destroy,
+                            font=("Comic Sans MS", 14),
+                            bg="#555555", fg="white", padx=20, pady=8)
+        exit_btn.pack(pady=5)
 
     #function to upload image
     def upload_image(self):
@@ -46,7 +62,7 @@ class CatDogClassifierGUI:
             self.img_label.image = img_tk
 
             #prepare image for model
-            img_model = image.load_img(file_path, target_size=(150, 150))
+            img_model = image.load_img(file_path, target_size=self.image_size)
             img_array = image.img_to_array(img_model)
             img_array = img_array / 255.0
             img_array = np.expand_dims(img_array, axis=0)
@@ -73,7 +89,9 @@ class CatDogClassifierGUI:
     def run(self):
         self.window.mainloop()
 
+
 #run the GUI loop
 if __name__ == "__main__":
     app = CatDogClassifierGUI()
     app.run()
+
