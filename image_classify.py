@@ -1,4 +1,5 @@
 #import necessary modules for image classification
+import tensorflow as tf
 from tensorflow.keras import layers, models  # Used to build the CNN model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator  # For image loading and augmentation
 
@@ -43,18 +44,16 @@ class ImageClassifier:
     def compile_model(self):
         self.model.compile(
             loss = 'binary_crossentropy',
-            optimizer = 'adam',
+            optimizer = tf.keras.optimizers.Adam(learning_rate = 0.0001),
             metrics = ['accuracy']
         )
             
     #training model and saving the history
-    def train(self, epochs = 10, steps_per_epoch = 100, test_steps =50):
+    def train(self, epochs = 5):
         self.history = self.model.fit(
-            self.train_generator,
-            steps_per_epoch = steps_per_epoch,
+            self.test_generator,
             epochs = epochs,
-            validation_data = self.test_generator,
-            validation_steps = test_steps
+            validation_data = self.validation_generator
         )
     #save the model
     def save_model(self, filename):
