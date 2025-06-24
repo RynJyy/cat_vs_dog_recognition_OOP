@@ -28,35 +28,43 @@ result_label.pack(pady=20)
 img_label = tk.Label(window, bg="#000000")
 img_label.pack(pady=10)
 
-# Label to display image
+#label to display image
 img_label = tk.Label(window, bg="#000000")
 img_label.pack(pady=10)
 
-# Function to upload image
+#function to upload image
 def upload_image():
     file_path = filedialog.askopenfilename()
 
     if file_path:
-        # Display image
+        #display image
         img = Image.open(file_path)
         img = img.resize((300, 300))
         img_tk = ImageTk.PhotoImage(img)
         img_label.configure(image=img_tk)
         img_label.image = img_tk
 
-        # Prepare image for model
+        #prepare image for model
         img_model = image.load_img(file_path, target_size=(150, 150))
         img_array = image.img_to_array(img_model)
         img_array = img_array / 255.0
         img_array = np.expand_dims(img_array, axis=0)
 
-        # Predict
+        #predict
         prediction = model.predict(img_array)[0][0]
 
-        # Display result
+        #display result
         if prediction > 0.5:
             result = f"🐶 Prediction: Dog"
         else:
             result = f"🐱 Prediction: Cat"
 
         result_label.config(text=result)
+
+#upload button
+upload_btn = tk.Button(window, text="Upload Image", command=upload_image, font=("Comic Sans MS", 16, "bold"),
+                       bg="#4CAF50", fg="white", activebackground="#45a049", padx=20, pady=10)
+upload_btn.pack(pady=20)
+
+#run the GUI loop
+window.mainloop()
