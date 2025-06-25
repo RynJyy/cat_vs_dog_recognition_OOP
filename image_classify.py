@@ -8,7 +8,7 @@ class ImageClassifier:
     def __init__(self, image_size=(160, 160), batch_size = 32):
         self.image_size = image_size
         self.batch_size = batch_size
-        self.model = None
+        self.model = None 
 
     #define method to load and validate data
     def load_data(self, train_dir, test_dir):
@@ -35,9 +35,9 @@ class ImageClassifier:
         #load training images
         self.validation_generator = val_datagen.flow_from_directory( 
             test_dir,
-            target_size=self.image_size,
-            batch_size=self.batch_size,
-            class_mode='binary'
+            target_size = self.image_size,
+            batch_size = self.batch_size,
+            class_mode = 'binary'
         )
 
     #compile the model with loss function, optimizer and metrics
@@ -51,7 +51,7 @@ class ImageClassifier:
     #training model and saving the history
     def train(self, epochs = 5):
         self.history = self.model.fit(
-            self.test_generator,
+            self.validation_generator,
             epochs = epochs,
             validation_data = self.validation_generator
         )
