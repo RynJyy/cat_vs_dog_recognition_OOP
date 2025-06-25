@@ -17,7 +17,7 @@ Whether you're training your own model or simply exploring how machine learning 
 
 ```
 archive/
-└── cats_vs_dogs/
+└── dogs_vs_cats/
     ├── train/
     │   ├── cats/
     │   └── dogs/
